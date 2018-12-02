@@ -70,3 +70,8 @@ def resnet_18_encoder( inputs, args ):
 
         return l
 
+def resnet_50_encoder( inputs, args ):
+    u_net_list = []
+    with tf.variable_scope( "encoder", reuse = tf.AUTO_REUSE ) as scope:
+        l = leaky_relu( conv2d( inputs, 64, k_h = 7, k_w = 7, d_h = 2, d_w = 2, name = "l0_conv" ) )
+        ld = tf.layers.max_pooling2d( l, 3, 2, padding = "same", name = "l0_max_pool" )
