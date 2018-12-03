@@ -26,7 +26,7 @@ class LSTM_Transformer( object ):
                                         self.config.trans_conv_ndims,
                                         [ self.config.trans_in_w, self.config.trans_in_h, self.config.trans_in_l ],
                                         self.config.trans_output_channel,
-                                        self.trans_kernel_shape,
+                                        self.config.trans_kernel_shape,
                                         name = "trans_conv_lstm" 
             )
             self.trans_output, self.trans_output_state = tf.nn.dynamic_rnn( self.rnn, 
