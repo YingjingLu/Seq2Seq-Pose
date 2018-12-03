@@ -7,6 +7,7 @@ class Data_Source( object ):
 	def __init__( self, config ):
 		
 		self.config = config
+		self.init()
 
 
 	def init( self ):
@@ -23,7 +24,8 @@ class Data_Source( object ):
 		self.cur_train_index = 0
 		self.cur_test_index = 0
 
-
+		del self.data
+		gc.collect()
 
 	def get_batch( self, batch_size = -1, frame_len = -1 ):
 
@@ -31,5 +33,7 @@ class Data_Source( object ):
 			batch_size = self.config.batch_size 
 		if frame_len == -1:
 			frame_len = self.config.frame_len
+
+		
 
 
